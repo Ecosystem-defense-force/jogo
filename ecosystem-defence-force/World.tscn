@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvno3xnn0hkj3"]
+[gd_scene load_steps=4 format=3 uid="uid://cvno3xnn0hkj3"]
 
+[ext_resource type="Script" uid="uid://cl7i36fydsa1h" path="res://movement.gd" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://dxxyluwmx23ex" path="res://Enemy.tscn" id="1_c6gwx"]
 
 [sub_resource type="Curve2D" id="Curve2D_2dftf"]
@@ -16,6 +17,7 @@ curve = SubResource("Curve2D_2dftf")
 [node name="EnemyFollower" type="PathFollow2D" parent="EnemyPath"]
 position = Vector2(-252, -68)
 rotation = -0.010562988
+script = ExtResource("1_2dftf")
 
 [node name="CharacterBody2D" parent="EnemyPath/EnemyFollower" instance=ExtResource("1_c6gwx")]
 
