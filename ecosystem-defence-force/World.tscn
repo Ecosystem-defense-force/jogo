@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvno3xnn0hkj3"]
+[gd_scene load_steps=14 format=3 uid="uid://cvno3xnn0hkj3"]
 
 [ext_resource type="Texture2D" uid="uid://bagd0rm6vy05p" path="res://sprites/free_tileset_16x16_by_chaoticcherrycake_ddi8611.png" id="1_bcbcq"]
-[ext_resource type="PackedScene" uid="uid://dxxyluwmx23ex" path="res://Enemy.tscn" id="1_c6gwx"]
-[ext_resource type="Script" uid="uid://brn1athmu18ei" path="res://path_follow_2d.gd" id="2_bcbcq"]
-[ext_resource type="PackedScene" uid="uid://cb1wyxa5biitg" path="res://HighlightTile.tscn" id="4_js7pq"]
+[ext_resource type="Script" uid="uid://cqxc8e5rmwkm7" path="res://FaseGerenciador.gd" id="1_fvag4"]
+[ext_resource type="Script" uid="uid://bvi80bao6o6ua" path="res://scripts/GerenciadorOndas.gd" id="3_wygdx"]
+[ext_resource type="PackedScene" uid="uid://dskfee6rap8ru" path="res://inimigos/Lenhador.tscn" id="4_bah7m"]
+[ext_resource type="PackedScene" path="res://HighlightTile.tscn" id="4_js7pq"]
+[ext_resource type="PackedScene" uid="uid://bsr6ms1kvj3s1" path="res://inimigos/Mandrake.tscn" id="5_fv4w7"]
+[ext_resource type="Script" uid="uid://ctnqrsmh0j16c" path="res://scripts/Wave.gd" id="6_fvag4"]
+[ext_resource type="Resource" uid="uid://cs7cj5pgu5bij" path="res://recursos/Wave1.tres" id="7_kva58"]
+[ext_resource type="PackedScene" uid="uid://cs187ghwphefg" path="res://torres/Slot.tscn" id="8_fv4w7"]
+[ext_resource type="PackedScene" uid="uid://d2alfhhprj6cc" path="res://recursos/HUD.tscn" id="9_fvag4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_js7pq"]
 texture = ExtResource("1_bcbcq")
@@ -119,15 +125,23 @@ texture = ExtResource("1_bcbcq")
 [sub_resource type="TileSet" id="TileSet_eu7l1"]
 sources/0 = SubResource("TileSetAtlasSource_js7pq")
 
-[sub_resource type="Curve2D" id="Curve2D_js7pq"]
+[sub_resource type="Curve2D" id="Curve2D_f5c0m"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 16, 120, 0, 0, 0, 0, 96, 120, 0, 0, 0, 0, 96, 40, 0, 0, 0, 0, 48, 40, 0, 0, 0, 0, 48, -8, 0, 0, 0, 0, 144, -8, 0, 0, 0, 0, 144, 40, 0, 0, 0, 0, 128, 40, 0, 0, 0, 0, 128, 88, 0, 0, 0, 0, 176, 88, 0, 0, 0, 0, 176, 120, 0, 0, 0, 0, 240, 120, 0, 0, 0, 0, 240, 56, 0, 0, 0, 0, 208, 56, 0, 0, 0, 0, 208, 24, 0, 0, 0, 0, 256, 24)
+"points": PackedVector2Array(0, 0, 0, 0, -9, 152, 0, 0, 0, 0, 103, 152, 0, 0, 0, 0, 103, 72, 0, 0, 0, 0, 55, 72, 0, 0, 0, 0, 55, 24, 0, 0, 0, 0, 151, 24, 0, 0, 0, 0, 151, 72, 0, 0, 0, 0, 135, 72, 0, 0, 0, 0, 135, 120, 0, 0, 0, 0, 183, 120, 0, 0, 0, 0, 183, 152, 0, 0, 0, 0, 247, 152, 0, 0, 0, 0, 247, 88, 0, 0, 0, 0, 215, 88, 0, 0, 0, 0, 215, 56, 0, 0, 0, 0, 335, 56)
+
+
 }
 point_count = 16
 
 [node name="World" type="Node2D"]
 
+
+texture_filter = 1
+script = ExtResource("1_fvag4")
+
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(1, 0)
+
 tile_set = SubResource("TileSet_eu7l1")
 format = 2
 layer_0/name = "Grass"
@@ -138,17 +152,28 @@ layer_2/name = "Deco"
 layer_2/tile_data = PackedInt32Array(0, 327680, 12, 65536, 327680, 13, 458752, 327680, 12, 524288, 327680, 13, 196609, 327680, 12, 262145, 327680, 13, 655362, 327680, 12, 720898, 327680, 13, 17, 65536, 12, 65553, 65536, 13, 18, 131072, 12, 65554, 131072, 13, 15, 65536, 12, 65551, 65536, 13, 16, 131072, 12, 65552, 131072, 13, 327699, 65536, 12, 393235, 65536, 13, 458770, 65536, 12, 524306, 65536, 13, 458771, 131072, 12, 524307, 131072, 13, 589842, 65536, 12, 655378, 65536, 13, 589843, 131072, 12, 655379, 131072, 13, 720914, 65536, 12, 720915, 131072, 12, 19, 65536, 12, 65555, 65536, 13, 196624, 262144, 18, 589831, 196608, 15, 589832, 196608, 15, 196614, 196608, 15, 65548, 196608, 15, 262156, 196608, 15, 458756, 262144, 15, 524298, 262144, 15, 65546, 262144, 15, 720911, 262144, 15, 393233, 262144, 15, 131091, 262144, 15, 262163, 262144, 15, 196626, 262144, 15, 327698, 196608, 16, 131090, 196608, 16, 131088, 131072, 16, 327697, 131072, 16, 589841, 196608, 16, 720913, 262144, 16, 262160, 262144, 16, 720910, 262144, 16)
 layer_3/name = "Troops"
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(8, 32)
-curve = SubResource("Curve2D_js7pq")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(16, 120)
-rotates = false
-cubic_interp = false
-script = ExtResource("2_bcbcq")
+[node name="Camera2D" type="Camera2D" parent="TileMap"]
+anchor_mode = 0
 
-[node name="CharacterBody2D" parent="Path2D/PathFollow2D" instance=ExtResource("1_c6gwx")]
-position = Vector2(1.9073486e-06, 0)
+[node name="Path2D" type="Path2D" parent="TileMap/Camera2D"]
+texture_filter = 1
+curve = SubResource("Curve2D_f5c0m")
+script = ExtResource("3_wygdx")
+cenas_inimigos = Array[PackedScene]([ExtResource("4_bah7m"), ExtResource("5_fv4w7")])
+lista_de_waves = Array[ExtResource("6_fvag4")]([ExtResource("7_kva58")])
 
 [node name="HighlightTile" parent="." instance=ExtResource("4_js7pq")]
+texture_filter = 1
+
+[node name="HUD" parent="." instance=ExtResource("9_fvag4")]
+
+[node name="Area2D10" parent="." instance=ExtResource("8_fv4w7")]
+position = Vector2(168, 136)
+
+[node name="Area2D11" parent="." instance=ExtResource("8_fv4w7")]
+position = Vector2(71, 40)
+
+[node name="Area2D12" parent="." instance=ExtResource("8_fv4w7")]
+position = Vector2(71, 136)
+

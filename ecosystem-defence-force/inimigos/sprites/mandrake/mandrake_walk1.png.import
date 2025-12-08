@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2lrcqapjxssj"
-path="res://.godot/imported/guarda_florestal.png-5ab796a07d0518f3428247011ef3474d.ctex"
+uid="uid://78dddu65atvm"
+path="res://.godot/imported/mandrake_walk1.png-67c4cc499071527e855414bbfa9195e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/guarda_florestal.png"
-dest_files=["res://.godot/imported/guarda_florestal.png-5ab796a07d0518f3428247011ef3474d.ctex"]
+source_file="res://inimigos/sprites/mandrake/mandrake_walk1.png"
+dest_files=["res://.godot/imported/mandrake_walk1.png-67c4cc499071527e855414bbfa9195e2.ctex"]
 
 [params]
 

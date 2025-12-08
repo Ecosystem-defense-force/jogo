@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SpawnInimigo" load_steps=2 format=3 uid="uid://dgbe1w8pn8g3u"]
+
+[ext_resource type="Script" uid="uid://6e2d86fdtyka" path="res://inimigos/SpawnInimigos.gd" id="1_yxp4v"]
+
+[resource]
+script = ExtResource("1_yxp4v")
+tipos_inimigos = Array[int]([1])
+metadata/_custom_type_script = "uid://6e2d86fdtyka"
