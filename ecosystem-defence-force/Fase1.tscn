@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://da67r8vpdggwt"]
+[gd_scene load_steps=11 format=3 uid="uid://da67r8vpdggwt"]
 
 [ext_resource type="Script" uid="uid://cqxc8e5rmwkm7" path="res://FaseGerenciador.gd" id="1_1wj8m"]
 [ext_resource type="Script" uid="uid://bvi80bao6o6ua" path="res://scripts/GerenciadorOndas.gd" id="1_56rjb"]
@@ -8,15 +8,15 @@
 [ext_resource type="Resource" uid="uid://cs7cj5pgu5bij" path="res://recursos/Wave1.tres" id="4_5jc3a"]
 [ext_resource type="PackedScene" uid="uid://d2alfhhprj6cc" path="res://recursos/HUD.tscn" id="7_1wj8m"]
 [ext_resource type="PackedScene" uid="uid://cs187ghwphefg" path="res://torres/Slot.tscn" id="8_82fsy"]
+[ext_resource type="PackedScene" uid="uid://cvno3xnn0hkj3" path="res://World.tscn" id="9_pyyah"]
 
 [sub_resource type="Curve2D" id="Curve2D_coe7y"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -47, 21, 0, 0, 0, 0, 46, 20, 0, 0, 0, 0, 48, 144, 0, 0, 0, 0, 204, 139, 0, 0, 0, 0, 203, 33, 0, 0, 0, 0, 231, 33, 0, 0, 0, 0, 304, 37, 0, 0, 0, 0, 304, 127, 0, 0, 0, 0, 353, 129, 0, 0, 0, 0, 374, 127, 0, 0, 0, 0, 299, 169, 0, 0, 0, 0, 439, 173)
-}
-point_count = 12
 
 [node name="Fase1" type="Node2D"]
 script = ExtResource("1_1wj8m")
+
+[node name="World" parent="." instance=ExtResource("9_pyyah")]
+position = Vector2(0, -3)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -26,27 +26,6 @@ curve = SubResource("Curve2D_coe7y")
 script = ExtResource("1_56rjb")
 cenas_inimigos = Array[PackedScene]([ExtResource("2_oge7e"), ExtResource("3_5jc3a")])
 lista_de_waves = Array[ExtResource("3_ud5y3")]([ExtResource("4_5jc3a")])
-
-[node name="Area2D" parent="." instance=ExtResource("8_82fsy")]
-position = Vector2(87, 115)
-
-[node name="Area2D2" parent="." instance=ExtResource("8_82fsy")]
-position = Vector2(83, 58)
-
-[node name="Area2D3" parent="." instance=ExtResource("8_82fsy")]
-position = Vector2(150, 94)
-
-[node name="Area2D4" parent="." instance=ExtResource("8_82fsy")]
-position = Vector2(27, 110)
-
-[node name="Area2D5" parent="." instance=ExtResource("8_82fsy")]
-position = Vector2(52, 65)
-
-[node name="Area2D6" parent="." instance=ExtResource("8_82fsy")]
-position = Vector2(70, 156)
-
-[node name="Area2D7" parent="." instance=ExtResource("8_82fsy")]
-position = Vector2(146, 42)
 
 [node name="Area2D8" parent="." instance=ExtResource("8_82fsy")]
 position = Vector2(200, 119)
