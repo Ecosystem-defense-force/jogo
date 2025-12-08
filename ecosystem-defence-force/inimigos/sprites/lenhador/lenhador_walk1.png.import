@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ogtfaojxm641"
-path="res://.godot/imported/mandrake_idle.png-d5b325eb91c7ab7aa8448344d3fcd8ff.ctex"
+uid="uid://dfjcaurmdnmgq"
+path="res://.godot/imported/lenhador_walk1.png-8d800c854834c031869dc83461e2628d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/mandrake/mandrake_idle.png"
-dest_files=["res://.godot/imported/mandrake_idle.png-d5b325eb91c7ab7aa8448344d3fcd8ff.ctex"]
+source_file="res://inimigos/sprites/lenhador/lenhador_walk1.png"
+dest_files=["res://.godot/imported/lenhador_walk1.png-8d800c854834c031869dc83461e2628d.ctex"]
 
 [params]
 

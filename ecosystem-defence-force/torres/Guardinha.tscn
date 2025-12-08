@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c022ih61rrv84"]
+
+[ext_resource type="Script" uid="uid://cpolxu2hdgqbp" path="res://torres/TorreBase.gd" id="1_jui2y"]
+[ext_resource type="Texture2D" uid="uid://d216jpqp0acem" path="res://torres/guardinha(de_cima).png" id="2_s1gqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1gqi"]
+radius = 13.038404
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("sprite_turret", "area_detector")]
+script = ExtResource("1_jui2y")
+sprite_turret = NodePath("Sprite2D")
+area_detector = NodePath("AreaDetectar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_s1gqi")
+
+[node name="AreaDetectar" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetectar"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_s1gqi")

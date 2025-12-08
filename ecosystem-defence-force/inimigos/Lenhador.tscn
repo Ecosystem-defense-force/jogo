@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dskfee6rap8ru"]
+
+[ext_resource type="Script" uid="uid://2i4hw05l3lsk" path="res://inimigos/InimigoBase.gd" id="1_dnx4s"]
+[ext_resource type="Texture2D" uid="uid://dfjcaurmdnmgq" path="res://inimigos/sprites/lenhador/lenhador_walk1.png" id="2_7wvx7"]
+[ext_resource type="Texture2D" uid="uid://cuicr8pgcbsne" path="res://inimigos/sprites/lenhador/lenhador_walk2.png" id="3_euhxu"]
+[ext_resource type="Script" uid="uid://do3ttx4r3ffa0" path="res://inimigos/InimigoHitbox.gd" id="3_ftfv3"]
+
+[sub_resource type="Curve2D" id="Curve2D_dnx4s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 41, -1, 0, 0, 0, 0, 44, 31, 0, 0, 0, 0, 45, 87, 0, 0, 0, 0, 96, 88, 0, 0, 0, 0, 86, 41, 0, 0, 0, 0, 141, 33, 0, 0, 0, 0, 158, 72, 0, 0, 0, 0, 127, 66, 0, 0, 0, 0, 127, 121, 0, 0, 0, 0, 75, 122, 0, 0, 0, 0, 58, 101, 0, 0, 0, 0, 70, 44, 0, 0, 0, 0, 89, 23, 0, 0, 0, 0, 138, 30, 0, 0, 0, 0, 170, 39, 0, 0, 0, 0, 174, 71, 0, 0, 0, 0, 158, 101, 0, 0, 0, 0, 158, 133, 0, 0, 0, 0, 193, 133, 0, 0, 0, 0, 219, 116, 0, 0, 0, 0, 238, 120, 0, 0, 0, 0, 211, 82, 0, 0, 0, 0, 192, 69, 0, 0, 0, 0, 191, 48, 0, 0, 0, 0, 195, 41, 0, 0, 0, 0, 214, 49, 0, 0, 0, 0, 216, 63, 0, 0, 0, 0, 172, 86, 0, 0, 0, 0, 183, 105, 0, 0, 0, 0, 227, 139, 0, 0, 0, 0, 279, 141, 0, 0, 0, 0, 260, 107, 0, 0, 0, 0, 249, 88, 0, 0, 0, 0, 241, 59, 0, 0, 0, 0, 256, 49, 0, 0, 0, 0, 275, 60, 0, 0, 0, 0, 293, 75, 0, 0, 0, 0, 297, 97, 0, 0, 0, 0, 303, 121, 0, 0, 0, 0, 307, 139, 0, 0, 0, 0, 259, 175, 0, 0, 0, 0, 222, 163, 0, 0, 0, 0, 160, 162, 0, 0, 0, 0, 113, 156, 0, 0, 0, 0, 90, 159, 0, 0, 0, 0, 73, 152, 0, 0, 0, 0, 51, 136, 0, 0, 0, 0, 34, 118, 0, 0, 0, 0, 34, 62, 0, 0, 0, 0, 152, 26, 0, 0, 0, 0, 210, 39, 0, 0, 0, 0, 268, 63, 0, 0, 0, 0, 298, 115, 0, 0, 0, 0, 304, 158, 0, 0, 0, 0, 317, 176, 0, 0, 0, 0, 317, 178, 0, 0, 0, 0, 323, 178)
+}
+point_count = 58
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvdgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7wvx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_euhxu")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 2.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftfv3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dnx4s")
+
+[node name="Lenhador" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("sprite")]
+position = Vector2(1, -1)
+rotates = false
+loop = false
+script = ExtResource("1_dnx4s")
+velocidade = 10.0
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Path2D/Lenhador"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rvdgx")
+animation = &"andar"
+
+[node name="AreaHitBox" type="Area2D" parent="Path2D/Lenhador" groups=["InimigoArea"]]
+monitoring = false
+script = ExtResource("3_ftfv3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/Lenhador/AreaHitBox"]
+shape = SubResource("RectangleShape2D_ftfv3")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://78dddu65atvm"
-path="res://.godot/imported/mandrake_walk1.png-235e37dc9f29b7dce12d1eaa58de4adb.ctex"
+uid="uid://ogtfaojxm641"
+path="res://.godot/imported/mandrake_idle.png-7a4e95dbb415b5b6e8339cb130435674.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/mandrake/mandrake_walk1.png"
-dest_files=["res://.godot/imported/mandrake_walk1.png-235e37dc9f29b7dce12d1eaa58de4adb.ctex"]
+source_file="res://inimigos/sprites/mandrake/mandrake_idle.png"
+dest_files=["res://.godot/imported/mandrake_idle.png-7a4e95dbb415b5b6e8339cb130435674.ctex"]
 
 [params]
 

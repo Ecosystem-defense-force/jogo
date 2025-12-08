@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DadosTorre" load_steps=4 format=3 uid="uid://cvampbi5mv3ks"]
+
+[ext_resource type="PackedScene" uid="uid://c022ih61rrv84" path="res://torres/Guardinha.tscn" id="1_cwjt3"]
+[ext_resource type="Script" uid="uid://cjkclc4q0jojo" path="res://scripts/DadosTorre.gd" id="1_hwayw"]
+[ext_resource type="Texture2D" uid="uid://c2lrcqapjxssj" path="res://torres/guarda_florestal.png" id="2_ncuai"]
+
+[resource]
+script = ExtResource("1_hwayw")
+icon = ExtResource("2_ncuai")
+cena_torre = ExtResource("1_cwjt3")
+metadata/_custom_type_script = "uid://cjkclc4q0jojo"

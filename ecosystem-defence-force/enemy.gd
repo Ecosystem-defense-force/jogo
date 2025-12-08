@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 # velocidade do inimigo 
 const ENEMY_SPEED = 50 

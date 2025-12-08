@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2lrcqapjxssj"
-path="res://.godot/imported/guarda_florestal.png-5ab796a07d0518f3428247011ef3474d.ctex"
+uid="uid://c0wdqlwusdgi6"
+path="res://.godot/imported/lenhador_idle.png-0374a29ca942ac4783fa5c4aee48021a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/guarda_florestal.png"
-dest_files=["res://.godot/imported/guarda_florestal.png-5ab796a07d0518f3428247011ef3474d.ctex"]
+source_file="res://inimigos/sprites/lenhador/lenhador_idle.png"
+dest_files=["res://.godot/imported/lenhador_idle.png-0374a29ca942ac4783fa5c4aee48021a.ctex"]
 
 [params]
 
