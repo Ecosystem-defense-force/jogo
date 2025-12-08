@@ -8,6 +8,10 @@
 
 config_version=5
 
+[accessibility]
+
+general/accessibility_support=2
+
 [application]
 
 config/name="EcosystemDefenceForce"
@@ -21,8 +25,8 @@ window/size/viewport_width=320
 window/size/viewport_height=192
 window/size/resizable=false
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-2d/snap/snap_2d_transforms_to_pixel=true
