@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0wdqlwusdgi6"
-path="res://.godot/imported/lenhador_idle.png-91536b23ed6160250fa608ae414d2534.ctex"
+uid="uid://bagd0rm6vy05p"
+path="res://.godot/imported/free_tileset_16x16_by_chaoticcherrycake_ddi8611.png-00af6a39ac1a2da066dd2ae7c10f6adc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/lenhador/lenhador_idle.png"
-dest_files=["res://.godot/imported/lenhador_idle.png-91536b23ed6160250fa608ae414d2534.ctex"]
+source_file="res://sprites/free_tileset_16x16_by_chaoticcherrycake_ddi8611.png"
+dest_files=["res://.godot/imported/free_tileset_16x16_by_chaoticcherrycake_ddi8611.png-00af6a39ac1a2da066dd2ae7c10f6adc.ctex"]
 
 [params]
 
