@@ -12,8 +12,7 @@ func _ready():
 		txt_label.text = text_value
 		txt_label.pivot_offset = txt_label.size / 2
 	
-	if is_instance_valid(anim_player):
-		anim_player.play("FloatAndFade")	
+	
 		
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
