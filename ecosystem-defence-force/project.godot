@@ -15,7 +15,7 @@ general/accessibility_support=2
 [application]
 
 config/name="EcosystemDefenceForce"
-run/main_scene="uid://cvno3xnn0hkj3"
+run/main_scene="uid://d10sqpwwvpya"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -29,7 +29,7 @@ window/size/viewport_width=400
 window/size/viewport_height=192
 window/size/resizable=false
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
+window/vsync/mode=0
 
 [layer_names]
 
