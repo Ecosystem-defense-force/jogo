@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://blf64undagpum"]
+[gd_scene load_steps=0 format=3 uid="uid://blf64undagpum"]
 
 [node name="Tela_vitoria" type="Control"]
 layout_mode = 3

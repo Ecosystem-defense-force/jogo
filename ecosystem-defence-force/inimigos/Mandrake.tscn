@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsr6ms1kvj3s1"]
+[gd_scene load_steps=9 format=3 uid="uid://bsr6ms1kvj3s1"]
 
 [ext_resource type="Script" uid="uid://2i4hw05l3lsk" path="res://inimigos/InimigoBase.gd" id="1_pqgsv"]
+[ext_resource type="PackedScene" uid="uid://bont1eijk3h6e" path="res://FloatingText.tscn" id="2_78aiu"]
 [ext_resource type="Texture2D" uid="uid://78dddu65atvm" path="res://inimigos/sprites/mandrake/mandrake_walk1.png" id="2_pqgsv"]
 [ext_resource type="Texture2D" uid="uid://lp1uou6870r" path="res://inimigos/sprites/mandrake/mandrake_walk2.png" id="3_78aiu"]
 [ext_resource type="Script" uid="uid://do3ttx4r3ffa0" path="res://inimigos/InimigoHitbox.gd" id="4_vvfxx"]
@@ -42,9 +43,11 @@ position = Vector2(-8, 152)
 rotates = false
 loop = false
 script = ExtResource("1_pqgsv")
+nome_inimigo = "Mandrágora"
 velocidade = 40.0
 vida_maxima = 30.0
 sprite = NodePath("Sprite2D")
+floating_text_scene = ExtResource("2_78aiu")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Path2D/Mandrake" groups=["InimigoArea"]]
 texture_filter = 1

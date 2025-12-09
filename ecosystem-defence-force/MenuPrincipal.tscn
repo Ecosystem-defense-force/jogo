@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d10sqpwwvpya"]
+[gd_scene load_steps=4 format=3 uid="uid://dx20rbqnp30ln"]
 
 [ext_resource type="Texture2D" uid="uid://bt7ohjode8cul" path="res://sprites/login.jpg" id="1_0oe1n"]
 [ext_resource type="FontFile" uid="uid://dmmiu372rqjto" path="res://sprites/Pixel Game.otf" id="1_ba235"]
