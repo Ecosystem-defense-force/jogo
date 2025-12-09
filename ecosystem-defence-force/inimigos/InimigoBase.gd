@@ -9,11 +9,13 @@ signal causou_dano_na_base(dano: int)
 @export var velocidade: float = 100.0
 @export var vida_maxima: float = 50.0
 @export var dano_na_floresta: int = 1 # Quanto de vida tira da sua base
-@export var recompensa_sementes: int = 10 # Dinheiro ganho ao derrotar
+@export var recompensa_sementes: int = 5 # Dinheiro ganho ao derrotar
 
 @export_category("Visual")
 @export var sprite: AnimatedSprite2D
 @export var barra_vida: ProgressBar
+
+@onready var game_manager = get_node("/root/GameManager")
 
 var vida_atual: float
 
@@ -69,6 +71,7 @@ func receber_dano(quantidade: float) -> void:
 		morrer()
 
 func morrer() -> void:
+	game_manager.add_money(recompensa_sementes)
 	morreu.emit(recompensa_sementes)
 	# Aqui você pode instanciar uma animação de explosão ou partículas de folhas
 	queue_free()

@@ -43,6 +43,7 @@ rotates = false
 loop = false
 script = ExtResource("1_dnx4s")
 velocidade = 10.0
+recompensa_sementes = 10
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Path2D/Lenhador"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://djhuyigtwblf0"]
 
 [ext_resource type="Script" uid="uid://ck1jj3qr0gaxw" path="res://hud.gd" id="1_gv1iq"]
-[ext_resource type="Texture2D" uid="uid://bkrfqth2h8vqt" path="res://sprites/hud.png" id="1_xxqia"]
+[ext_resource type="Texture2D" uid="uid://bq52lq31n01p0" path="res://sprites/hud.png" id="1_xxqia"]
 [ext_resource type="Texture2D" uid="uid://c2lrcqapjxssj" path="res://torres/guarda_florestal.png" id="2_gv1iq"]
 [ext_resource type="Script" uid="uid://cpy5kh5bahy1c" path="res://icone_tropa.gd" id="3_1and6"]
 [ext_resource type="FontFile" uid="uid://dxwgbjrmy4s3k" path="res://fontes/upheavtt.ttf" id="3_w75gc"]

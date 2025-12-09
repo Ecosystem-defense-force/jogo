@@ -42,6 +42,7 @@ position = Vector2(-8, 152)
 rotates = false
 loop = false
 script = ExtResource("1_pqgsv")
+nome_inimigo = "Mandrágora"
 velocidade = 40.0
 vida_maxima = 30.0
 sprite = NodePath("Sprite2D")

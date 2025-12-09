@@ -5,6 +5,8 @@ extends TextureRect
 @export var troop_cost: int = 100
 @export var drag_ghost_scene: PackedScene
 
+@onready var game_manager = get_node("/root/GameManager")
+
 #constantes do mapa
 const PLACEMENT_COLLISION_LAYER = 1
 const OBSTACLE_COLLISION_LAYER = 2
@@ -69,6 +71,12 @@ func end_drag():
 	
 	var snapped_pos = ghost_instance.global_position
 	
+	#validação monetaria
+	if not game_manager.spend_money(troop_cost):
+		ghost_instance.queue_free()
+		print("Sem dinheiro!")
+		return
+			
 	var space_state = tile_map.get_world_2d().direct_space_state
 	
 	var params = PhysicsPointQueryParameters2D.new()
@@ -94,7 +102,11 @@ func end_drag():
 		troop.global_position = center_pos
 		world_node.add_child(troop)
 		
-	ghost_instance.queue_free()
+		ghost_instance.queue_free()
+	else:
+		game_manager.add_money(troop_cost)
+		ghost_instance.queue_free()
+		
 		
 	
 	
