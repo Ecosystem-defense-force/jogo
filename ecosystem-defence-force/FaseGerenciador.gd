@@ -1,9 +1,6 @@
 extends Node2D
+@onready var game_manager = get_node("/root/GameManager")
 
-@export var sementes_iniciais: int = 50
-@onready var sementes_atuais: int = sementes_iniciais
-
-# Interface (HUD) que vamos controlar
 @onready var hud_construcao: CanvasLayer = $HUD 
 
 # Guarda qual Slot o jogador clicou por último
@@ -39,14 +36,15 @@ func tentar_comprar_torre(dados: DadosTorre) -> void:
 	if slot_selecionado == null:
 		return
 		
-	if sementes_atuais >= dados.preco:
-		# Paga e Constrói
-		sementes_atuais -= dados.preco
+	if game_manager.spend_money(dados.preco):
 		slot_selecionado.construir(dados.cena_torre)
-		
-		# Fecha o menu e limpa a seleção
+	
 		hud_construcao.visible = false
 		slot_selecionado = null
-		print("Construído! Sementes restantes: ", sementes_atuais)
+		print("Construído! Sementes restantes: ", game_manager.player_money)
 	else:
 		print("Sem dinheiro!")
+		
+		
+		
+		

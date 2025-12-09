@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cvno3xnn0hkj3"]
 
 [ext_resource type="Texture2D" uid="uid://bagd0rm6vy05p" path="res://sprites/free_tileset_16x16_by_chaoticcherrycake_ddi8611.png" id="1_bcbcq"]
-[ext_resource type="Script" path="res://FaseGerenciador.gd" id="1_fvag4"]
+[ext_resource type="Script" uid="uid://cqxc8e5rmwkm7" path="res://FaseGerenciador.gd" id="1_fvag4"]
 [ext_resource type="Script" uid="uid://bvi80bao6o6ua" path="res://scripts/GerenciadorOndas.gd" id="3_wygdx"]
 [ext_resource type="PackedScene" uid="uid://dskfee6rap8ru" path="res://inimigos/Lenhador.tscn" id="4_bah7m"]
 [ext_resource type="PackedScene" uid="uid://cb1wyxa5biitg" path="res://HighlightTile.tscn" id="4_js7pq"]
