@@ -15,7 +15,7 @@ general/accessibility_support=2
 [application]
 
 config/name="EcosystemDefenceForce"
-run/main_scene="uid://d10sqpwwvpya"
+run/main_scene="uid://dx20rbqnp30ln"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
