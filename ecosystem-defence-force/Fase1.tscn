@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://da67r8vpdggwt"]
 
-[ext_resource type="Script" uid="uid://cqxc8e5rmwkm7" path="res://FaseGerenciador.gd" id="1_1wj8m"]
+[ext_resource type="Script" path="res://FaseGerenciador.gd" id="1_1wj8m"]
 [ext_resource type="Script" uid="uid://bvi80bao6o6ua" path="res://scripts/GerenciadorOndas.gd" id="1_56rjb"]
 [ext_resource type="PackedScene" uid="uid://dskfee6rap8ru" path="res://inimigos/Lenhador.tscn" id="2_oge7e"]
 [ext_resource type="PackedScene" uid="uid://bsr6ms1kvj3s1" path="res://inimigos/Mandrake.tscn" id="3_5jc3a"]

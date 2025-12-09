@@ -8,20 +8,35 @@
 
 config_version=5
 
+[accessibility]
+
+general/accessibility_support=2
+
 [application]
 
 config/name="EcosystemDefenceForce"
-run/main_scene="uid://cvno3xnn0hkj3"
+run/main_scene="uid://dx20rbqnp30ln"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://GameManager.gd"
+
 [display]
 
-window/size/viewport_width=320
+window/size/viewport_width=400
 window/size/viewport_height=192
+window/size/resizable=false
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
+window/vsync/mode=0
 
-[global_group]
+[layer_names]
 
-InimigoArea=""
-Slots=""
+2d_physics/layer_1="valido"
+2d_physics/layer_2="bloqueio"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

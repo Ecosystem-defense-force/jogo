@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://djhuyigtwblf0"]
+
+[ext_resource type="Script" uid="uid://ck1jj3qr0gaxw" path="res://hud.gd" id="1_gv1iq"]
+[ext_resource type="Texture2D" uid="uid://bq52lq31n01p0" path="res://sprites/hud.png" id="1_xxqia"]
+[ext_resource type="Texture2D" uid="uid://c2lrcqapjxssj" path="res://torres/guarda_florestal.png" id="2_gv1iq"]
+[ext_resource type="Script" uid="uid://cpy5kh5bahy1c" path="res://icone_tropa.gd" id="3_1and6"]
+[ext_resource type="FontFile" uid="uid://dxwgbjrmy4s3k" path="res://fontes/upheavtt.ttf" id="3_w75gc"]
+[ext_resource type="PackedScene" uid="uid://c022ih61rrv84" path="res://torres/Guardinha.tscn" id="4_w75gc"]
+[ext_resource type="PackedScene" uid="uid://c22b7ohmxukfh" path="res://DragGhost.tscn" id="5_n0ylh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1and6"]
+line_spacing = 1.0
+font = ExtResource("3_w75gc")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_w75gc"]
+font = ExtResource("3_w75gc")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_gv1iq"]
+font = ExtResource("3_w75gc")
+font_size = 8
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("lbl_hp_base", "lbl_onda_atual", "lbl_dinheiro")]
+script = ExtResource("1_gv1iq")
+lbl_hp_base = NodePath("Hud_Container/ui/InfoContainer/lbl_hp_base")
+lbl_onda_atual = NodePath("Hud_Container/ui/InfoContainer/lbl_onda_atual")
+lbl_dinheiro = NodePath("Hud_Container/ui/InfoContainer/lbl_dinheiro")
+
+[node name="Hud_Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ui" type="TextureRect" parent="Hud_Container"]
+layout_mode = 0
+offset_left = 320.0
+offset_right = 400.0
+offset_bottom = 192.0
+texture = ExtResource("1_xxqia")
+
+[node name="InfoContainer" type="VBoxContainer" parent="Hud_Container/ui"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 58.0
+
+[node name="lbl_hp_base" type="Label" parent="Hud_Container/ui/InfoContainer"]
+layout_mode = 2
+text = "HP: 100"
+label_settings = SubResource("LabelSettings_1and6")
+
+[node name="lbl_onda_atual" type="Label" parent="Hud_Container/ui/InfoContainer"]
+layout_mode = 2
+text = "Wave: 1"
+label_settings = SubResource("LabelSettings_w75gc")
+
+[node name="lbl_dinheiro" type="Label" parent="Hud_Container/ui/InfoContainer"]
+layout_mode = 2
+text = "$ementes: $300"
+label_settings = SubResource("LabelSettings_gv1iq")
+
+[node name="tropa1" type="TextureRect" parent="Hud_Container"]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 71.0
+offset_right = 353.0
+offset_bottom = 91.0
+texture = ExtResource("2_gv1iq")
+script = ExtResource("3_1and6")
+troop_scene = ExtResource("4_w75gc")
+drag_ghost_scene = ExtResource("5_n0ylh")
