@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dskfee6rap8ru"]
+[gd_scene load_steps=9 format=3 uid="uid://dskfee6rap8ru"]
 
 [ext_resource type="Script" uid="uid://2i4hw05l3lsk" path="res://inimigos/InimigoBase.gd" id="1_dnx4s"]
 [ext_resource type="Texture2D" uid="uid://dfjcaurmdnmgq" path="res://inimigos/sprites/lenhador/lenhador_walk1.png" id="2_7wvx7"]
+[ext_resource type="PackedScene" uid="uid://bont1eijk3h6e" path="res://FloatingText.tscn" id="2_euhxu"]
 [ext_resource type="Texture2D" uid="uid://cuicr8pgcbsne" path="res://inimigos/sprites/lenhador/lenhador_walk2.png" id="3_euhxu"]
 [ext_resource type="Script" uid="uid://do3ttx4r3ffa0" path="res://inimigos/InimigoHitbox.gd" id="3_ftfv3"]
 
@@ -45,6 +46,7 @@ script = ExtResource("1_dnx4s")
 velocidade = 10.0
 recompensa_sementes = 10
 sprite = NodePath("Sprite2D")
+floating_text_scene = ExtResource("2_euhxu")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Path2D/Lenhador"]
 texture_filter = 1

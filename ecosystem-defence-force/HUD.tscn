@@ -42,9 +42,9 @@ texture = ExtResource("1_xxqia")
 
 [node name="InfoContainer" type="VBoxContainer" parent="Hud_Container/ui"]
 layout_mode = 0
-offset_left = 10.0
+offset_left = 9.0
 offset_top = 24.0
-offset_right = 71.0
+offset_right = 72.0
 offset_bottom = 58.0
 
 [node name="lbl_hp_base" type="Label" parent="Hud_Container/ui/InfoContainer"]
@@ -59,7 +59,7 @@ label_settings = SubResource("LabelSettings_w75gc")
 
 [node name="lbl_dinheiro" type="Label" parent="Hud_Container/ui/InfoContainer"]
 layout_mode = 2
-text = "Money: $300"
+text = "$ementes: $300"
 label_settings = SubResource("LabelSettings_gv1iq")
 
 [node name="tropa1" type="TextureRect" parent="Hud_Container"]

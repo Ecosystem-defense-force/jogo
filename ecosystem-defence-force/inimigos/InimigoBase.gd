@@ -14,6 +14,7 @@ signal causou_dano_na_base(dano: int)
 @export_category("Visual")
 @export var sprite: AnimatedSprite2D
 @export var barra_vida: ProgressBar
+@export var floating_text_scene: PackedScene
 
 @onready var game_manager = get_node("/root/GameManager")
 
@@ -72,6 +73,16 @@ func receber_dano(quantidade: float) -> void:
 
 func morrer() -> void:
 	game_manager.add_money(recompensa_sementes)
+	
+	#retorno visual do ganho de dinheiro
+	if floating_text_scene:
+		var float_instance = floating_text_scene.instantiate()
+		
+		float_instance.text_value = "+ $" + str(recompensa_sementes)
+		float_instance.global_position = global_position
+		
+		get_tree().get_root().add_child(float_instance)
+	
 	morreu.emit(recompensa_sementes)
 	# Aqui você pode instanciar uma animação de explosão ou partículas de folhas
 	queue_free()
