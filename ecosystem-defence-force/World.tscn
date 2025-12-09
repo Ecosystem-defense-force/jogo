@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvno3xnn0hkj3"]
+[gd_scene load_steps=15 format=3 uid="uid://cvno3xnn0hkj3"]
 
 [ext_resource type="Texture2D" uid="uid://bagd0rm6vy05p" path="res://sprites/free_tileset_16x16_by_chaoticcherrycake_ddi8611.png" id="1_bcbcq"]
 [ext_resource type="Script" path="res://FaseGerenciador.gd" id="1_fvag4"]
@@ -10,11 +10,7 @@
 [ext_resource type="Resource" uid="uid://cs7cj5pgu5bij" path="res://recursos/Wave1.tres" id="7_kva58"]
 [ext_resource type="PackedScene" uid="uid://cs187ghwphefg" path="res://torres/Slot.tscn" id="8_fv4w7"]
 [ext_resource type="PackedScene" uid="uid://d2alfhhprj6cc" path="res://recursos/HUD.tscn" id="9_fvag4"]
-[ext_resource type="Texture2D" uid="uid://bkrfqth2h8vqt" path="res://sprites/hud.png" id="11_kva58"]
-[ext_resource type="Texture2D" uid="uid://c2lrcqapjxssj" path="res://torres/guarda_florestal.png" id="12_f5c0m"]
-[ext_resource type="Script" uid="uid://cpy5kh5bahy1c" path="res://icone_tropa.gd" id="13_b2ar6"]
-[ext_resource type="PackedScene" uid="uid://c022ih61rrv84" path="res://torres/Guardinha.tscn" id="14_ee7l0"]
-[ext_resource type="PackedScene" uid="uid://c22b7ohmxukfh" path="res://DragGhost.tscn" id="15_gn8l5"]
+[ext_resource type="PackedScene" uid="uid://djhuyigtwblf0" path="res://HUD.tscn" id="11_kva58"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_js7pq"]
 texture = ExtResource("1_bcbcq")
@@ -168,28 +164,4 @@ position = Vector2(71, 40)
 [node name="Area2D12" parent="." instance=ExtResource("8_fv4w7")]
 position = Vector2(71, 136)
 
-[node name="Hud_Layer" type="CanvasLayer" parent="."]
-
-[node name="Hud_Container" type="Control" parent="Hud_Layer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ui" type="TextureRect" parent="Hud_Layer/Hud_Container"]
-layout_mode = 0
-offset_left = 320.0
-offset_right = 400.0
-offset_bottom = 192.0
-texture = ExtResource("11_kva58")
-
-[node name="tropa1" type="TextureRect" parent="Hud_Layer/Hud_Container"]
-layout_mode = 0
-offset_left = 333.0
-offset_top = 71.0
-offset_right = 353.0
-offset_bottom = 91.0
-texture = ExtResource("12_f5c0m")
-script = ExtResource("13_b2ar6")
-troop_scene = ExtResource("14_ee7l0")
-drag_ghost_scene = ExtResource("15_gn8l5")
+[node name="HUD2" parent="." instance=ExtResource("11_kva58")]
