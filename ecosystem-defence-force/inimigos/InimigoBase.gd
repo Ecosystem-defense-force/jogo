@@ -20,40 +20,29 @@ signal causou_dano_na_base(dano: int)
 
 var vida_atual: float
 
+# --- NOVO: Função para a Torre saber quem está na frente ---
+func obter_progresso_total() -> float:
+	# Retorna a propriedade nativa do PathFollow2D (distância em pixels)
+	return progress 
+# -----------------------------------------------------------
+
 func _ready() -> void:
-# --- SISTEMA DE DIFICULDADE PROGRESSIVA ---
-	# Pega a onda atual do GameManager. Subtraímos 1 porque a onda 1 é índice 0 no cálculo.
 	var indice_onda = game_manager.current_wave - 1
-	
-	# Garante que não seja negativo (caso algo bugue)
 	if indice_onda < 0: indice_onda = 0
-	# AUMENTAR DINHEIRO: Ganha +2 moedas extras para cada nível de onda
-	# Onda 1: Base (5) + 0 = 5
-	# Onda 2: Base (5) + 2 = 7
-	# Onda 3: Base (5) + 4 = 9
-	recompensa_sementes = recompensa_sementes + (indice_onda * 2)
 	
-	# 2. AUMENTAR VIDA (+20% por onda)
-	# Ex: Onda 1 = 100% | Onda 2 = 120% | Onda 3 = 140%
+	# Balanceamento
 	vida_maxima = vida_maxima * (1.0 + (indice_onda * 0.2))
-	vida_atual = vida_maxima # Aplica a nova vida cheia
-	
-	# 3. AUMENTAR DINHEIRO (+2 de ouro extra por onda)
-	recompensa_sementes = recompensa_sementes + (indice_onda * 2)
-	
-	# 4. EXTRA: AUMENTAR VELOCIDADE (+5% por onda)
-	# Isso evita que o jogo fique fácil demais só com torres fortes
+	vida_atual = vida_maxima
+	recompensa_sementes = recompensa_sementes + (indice_onda * 2) # Linha duplicada removida
 	velocidade = velocidade * (1.0 + (indice_onda * 0.05))
 	
 	if sprite:
 		sprite.play("andar")
-	# ---------------------
 	
-	# Configura a barra de vida (opcional)
 	if barra_vida:
 		barra_vida.max_value = vida_maxima
 		barra_vida.value = vida_atual
-		barra_vida.visible = false # Só mostra quando tomar dano
+		barra_vida.visible = false 
 
 func _physics_process(delta: float) -> void:
 	# Movimentação ao longo do Path2D
@@ -64,15 +53,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		print("Erro: Caminho tem tamanho 0!")
 	
-	# Espelhar o sprite (Flip H) dependendo da direção
-	# Se a rotação do PathFollow for > 90 graus ou < -90, ele está indo para a esquerda
+	# Espelhar sprite
 	if sprite:
 		var angulo_graus = rotation_degrees
-		# Normaliza o ângulo para ficar entre -180 e 180
 		while angulo_graus > 180: angulo_graus -= 360
 		while angulo_graus < -180: angulo_graus += 360
-		
-		# Se estiver olhando para a esquerda, flipa o sprite
 		sprite.flip_v = abs(angulo_graus) > 90
 
 	# Verifica se chegou ao fim do caminho (progress_ratio vai de 0.0 a 1.0)
@@ -90,26 +75,18 @@ func _physics_process(delta: float) -> void:
 
 func receber_dano(quantidade: float) -> void:
 	vida_atual -= quantidade
-	
 	if barra_vida:
 		barra_vida.visible = true
 		barra_vida.value = vida_atual
-	
 	if vida_atual <= 0:
 		morrer()
 
 func morrer() -> void:
 	game_manager.add_money(recompensa_sementes)
-	
-	#retorno visual do ganho de dinheiro
 	if floating_text_scene:
 		var float_instance = floating_text_scene.instantiate()
-		
 		float_instance.text_value = "+ $" + str(recompensa_sementes)
 		float_instance.global_position = global_position
-		
 		get_tree().get_root().add_child(float_instance)
-	
 	morreu.emit(recompensa_sementes)
-	# Aqui você pode instanciar uma animação de explosão ou partículas de folhas
 	queue_free()

@@ -9,6 +9,7 @@ radius = 13.038404
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("sprite_turret", "ponto_de_saida_tiro", "area_detector")]
 script = ExtResource("1_jui2y")
+alcance = 50.0
 sprite_turret = NodePath("Sprite2D")
 ponto_de_saida_tiro = NodePath("Sprite2D/saidaTiro")
 cena_projetil = ExtResource("2_rlj3g")
