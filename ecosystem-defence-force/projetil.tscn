@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmu3egxrsey2r"]
+[gd_scene load_steps=4 format=3 uid="uid://d1afjdvruhbh6"]
 
-[ext_resource type="Script" uid="uid://1qyb6lrkymp2" path="res://projetil.gd" id="1_e138m"]
+[ext_resource type="Script" path="res://projetil.gd" id="1_e138m"]
 [ext_resource type="Texture2D" uid="uid://yijm8l5wiefa" path="res://sprites/Adobe Express - file.png" id="2_d76vc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ip8sl"]
