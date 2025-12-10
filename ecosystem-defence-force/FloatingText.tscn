@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bont1eijk3h6e"]
+
+[ext_resource type="Script" uid="uid://cktc55nalrbjm" path="res://floating_text.gd" id="1_bmcqi"]
+[ext_resource type="FontFile" uid="uid://dxwgbjrmy4s3k" path="res://fontes/upheavtt.ttf" id="2_fpf3r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f7o28"]
+font = ExtResource("2_fpf3r")
+font_size = 6
+
+[node name="FloatingText" type="Node2D" node_paths=PackedStringArray("txt_label", "anim_player")]
+script = ExtResource("1_bmcqi")
+txt_label = NodePath("txt_label")
+anim_player = NodePath("txt_label/AnimationPlayer")
+
+[node name="txt_label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "$10"
+label_settings = SubResource("LabelSettings_f7o28")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="txt_label"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=5 format=3 uid="uid://cs7cj5pgu5bij"]
+
+[ext_resource type="Script" uid="uid://ctnqrsmh0j16c" path="res://scripts/Wave.gd" id="1_c72gw"]
+[ext_resource type="Script" uid="uid://6e2d86fdtyka" path="res://inimigos/SpawnInimigos.gd" id="2_hob1q"]
+[ext_resource type="Resource" uid="uid://cfmhplkko1dmq" path="res://recursos/Spawn_Lenhadores_Basico.tres" id="3_hob1q"]
+[ext_resource type="Resource" uid="uid://dgbe1w8pn8g3u" path="res://recursos/Spawn_Mandrake_Basico.tres" id="4_oqm0a"]
+
+[resource]
+script = ExtResource("1_c72gw")
+spawns_inimigo = Array[ExtResource("2_hob1q")]([ExtResource("3_hob1q"), ExtResource("4_oqm0a")])
+metadata/_custom_type_script = "uid://ctnqrsmh0j16c"

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://blf64undagpum"]
+
+[ext_resource type="FontFile" uid="uid://dmmiu372rqjto" path="res://sprites/Pixel Game.otf" id="1_nsdld"]
+[ext_resource type="Script" uid="uid://dpgtjy2lkidyw" path="res://tela_vitoria.gd" id="1_sw3hn"]
+[ext_resource type="Texture2D" uid="uid://bxwkv4vwn2q8p" path="res://sprites/victorious_forest_400x192_final.png" id="3_sw3hn"]
+
+[node name="Tela_vitoria" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sw3hn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_nsdld")
+theme_override_font_sizes/font_size = 29
+text = "You Saved The Forest!"
+horizontal_alignment = 1
+
+[node name="Menu" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_nsdld")
+theme_override_font_sizes/font_size = 29
+text = "Menu"
+
+[node name="Quit" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_nsdld")
+theme_override_font_sizes/font_size = 29
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_sw3hn")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

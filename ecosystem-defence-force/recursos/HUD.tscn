@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2alfhhprj6cc"]
+
+[ext_resource type="Script" uid="uid://bb6hxv5qol6xu" path="res://recursos/botao_torres.gd" id="1_a0v1a"]
+[ext_resource type="Texture2D" uid="uid://c2lrcqapjxssj" path="res://torres/guarda_florestal.png" id="1_sks5i"]
+[ext_resource type="Resource" uid="uid://cvampbi5mv3ks" path="res://recursos/Info_Guardinha.tres" id="2_r2uqb"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 101.0
+offset_top = 138.0
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="Guardinha" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Panel/Guardinha"]
+layout_mode = 2
+text = "10"
+icon = ExtResource("1_sks5i")
+alignment = 0
+script = ExtResource("1_a0v1a")
+dados_da_torre = ExtResource("2_r2uqb")

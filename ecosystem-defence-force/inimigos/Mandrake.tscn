@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsr6ms1kvj3s1"]
+
+[ext_resource type="Script" uid="uid://2i4hw05l3lsk" path="res://inimigos/InimigoBase.gd" id="1_pqgsv"]
+[ext_resource type="PackedScene" uid="uid://bont1eijk3h6e" path="res://FloatingText.tscn" id="2_78aiu"]
+[ext_resource type="Texture2D" uid="uid://78dddu65atvm" path="res://inimigos/sprites/mandrake/mandrake_walk1.png" id="2_pqgsv"]
+[ext_resource type="Texture2D" uid="uid://lp1uou6870r" path="res://inimigos/sprites/mandrake/mandrake_walk2.png" id="3_78aiu"]
+[ext_resource type="Script" uid="uid://do3ttx4r3ffa0" path="res://inimigos/InimigoHitbox.gd" id="4_vvfxx"]
+
+[sub_resource type="Curve2D" id="Curve2D_dnx4s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -8, 152, 0, 0, 0, 0, 104, 152, 0, 0, 0, 0, 104, 72, 0, 0, 0, 0, 56, 72, 0, 0, 0, 0, 56, 24, 0, 0, 0, 0, 152, 24, 0, 0, 0, 0, 152, 72, 0, 0, 0, 0, 136, 72, 0, 0, 0, 0, 136, 120, 0, 0, 0, 0, 184, 120, 0, 0, 0, 0, 184, 152, 0, 0, 0, 0, 248, 152, 0, 0, 0, 0, 248, 88, 0, 0, 0, 0, 216, 88, 0, 0, 0, 0, 216, 56, 0, 0, 0, 0, 336, 56)
+}
+point_count = 16
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvdgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pqgsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_78aiu")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftfv3"]
+size = Vector2(15, 16)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dnx4s")
+
+[node name="Mandrake" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("sprite") groups=["Inimigos"]]
+position = Vector2(-8, 152)
+rotates = false
+loop = false
+script = ExtResource("1_pqgsv")
+nome_inimigo = "Mandrágora"
+velocidade = 40.0
+vida_maxima = 30.0
+sprite = NodePath("Sprite2D")
+floating_text_scene = ExtResource("2_78aiu")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Path2D/Mandrake" groups=["InimigoArea"]]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rvdgx")
+animation = &"andar"
+
+[node name="AreaHitBox" type="Area2D" parent="Path2D/Mandrake" groups=["InimigoArea"]]
+monitoring = false
+script = ExtResource("4_vvfxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/Mandrake/AreaHitBox"]
+shape = SubResource("RectangleShape2D_ftfv3")
