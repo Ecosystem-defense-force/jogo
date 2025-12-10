@@ -12,8 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_menu_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://MenuPrincipal.tscn") # Replace with function body.
 
 
 func _on_quit_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().quit() # Replace with function body.
