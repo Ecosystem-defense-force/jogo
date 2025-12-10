@@ -39,7 +39,7 @@ size = Vector2(12, 14)
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_dnx4s")
 
-[node name="Lenhador" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("sprite")]
+[node name="Lenhador" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("sprite") groups=["Inimigos"]]
 position = Vector2(-8, 152)
 rotates = false
 loop = false

@@ -10,7 +10,7 @@ signal tempo_proxima_wave_iniciado(tempo_total: float)
 @export_group("Configurações da Wave")
 @export var cenas_inimigos: Array[PackedScene]
 @export var lista_de_waves: Array[Wave] 
-@export var tempo_entre_waves: float = 60.0
+@export var tempo_entre_waves: float = 3.0
 @export var multiplicador_dificuldade: int = 2
 
 # Se TRUE, inicia a próxima wave assim que matar todos (sem esperar os 5s).
@@ -82,6 +82,12 @@ func _spawnar_inimigo(spawn_info: SpawnInimigo) -> void:
 	if not cena_inimigo: return
 
 	var instancia = cena_inimigo.instantiate()
+	
+	print("Spawnando: ", instancia.name)
+	if instancia.get_script():
+		print("Script anexado: ", instancia.get_script().resource_path)
+	else:
+		print("ALERTA: Este objeto NÃO TEM SCRIPT anexado!")
 	
 	if not instancia.has_signal("morreu"):
 		push_error("ERRO: Inimigo sem sinal 'morreu'")
