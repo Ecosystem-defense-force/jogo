@@ -148,7 +148,7 @@ texture_filter = 1
 curve = SubResource("Curve2D_f5c0m")
 script = ExtResource("3_wygdx")
 cenas_inimigos = Array[PackedScene]([ExtResource("4_bah7m"), ExtResource("5_fv4w7")])
-lista_de_waves = Array[ExtResource("6_fvag4")]([ExtResource("7_kva58")])
+lista_de_waves = Array[ExtResource("6_fvag4")]([ExtResource("7_kva58"), ExtResource("7_kva58"), ExtResource("7_kva58"), ExtResource("7_kva58"), ExtResource("7_kva58")])
 
 [node name="HighlightTile" parent="." instance=ExtResource("4_js7pq")]
 texture_filter = 1
@@ -157,9 +157,6 @@ texture_filter = 1
 
 [node name="Area2D10" parent="." instance=ExtResource("8_fv4w7")]
 position = Vector2(168, 136)
-
-[node name="Area2D11" parent="." instance=ExtResource("8_fv4w7")]
-position = Vector2(71, 40)
 
 [node name="Area2D12" parent="." instance=ExtResource("8_fv4w7")]
 position = Vector2(71, 136)

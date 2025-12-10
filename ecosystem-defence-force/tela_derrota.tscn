@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://loxi71omvgw3"]
+[gd_scene format=3 uid="uid://loxi71omvgw3"]
 
 [node name="TelaDerrota" type="Control"]
 layout_mode = 3
