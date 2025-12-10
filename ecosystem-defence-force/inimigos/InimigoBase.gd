@@ -21,9 +21,32 @@ signal causou_dano_na_base(dano: int)
 var vida_atual: float
 
 func _ready() -> void:
-	vida_atual = vida_maxima
+# --- SISTEMA DE DIFICULDADE PROGRESSIVA ---
+	# Pega a onda atual do GameManager. Subtraímos 1 porque a onda 1 é índice 0 no cálculo.
+	var indice_onda = game_manager.current_wave - 1
 	
-	# INÍCIO DA ANIMAÇÃO ---
+	# Garante que não seja negativo (caso algo bugue)
+	if indice_onda < 0: indice_onda = 0
+	# AUMENTAR DINHEIRO: Ganha +2 moedas extras para cada nível de onda
+	# Onda 1: Base (5) + 0 = 5
+	# Onda 2: Base (5) + 2 = 7
+	# Onda 3: Base (5) + 4 = 9
+	recompensa_sementes = recompensa_sementes + (indice_onda * 2)
+	
+	# 2. AUMENTAR VIDA (+20% por onda)
+	# Ex: Onda 1 = 100% | Onda 2 = 120% | Onda 3 = 140%
+	vida_maxima = vida_maxima * (1.0 + (indice_onda * 0.2))
+	vida_atual = vida_maxima # Aplica a nova vida cheia
+	
+	# 3. AUMENTAR DINHEIRO (+2 de ouro extra por onda)
+	recompensa_sementes = recompensa_sementes + (indice_onda * 2)
+	
+	# 4. EXTRA: AUMENTAR VELOCIDADE (+5% por onda)
+	# Isso evita que o jogo fique fácil demais só com torres fortes
+	velocidade = velocidade * (1.0 + (indice_onda * 0.05))
+	
+	print("Inimigo Buffado! Vida: ", vida_maxima, " | Vel: ", velocidade)
+	# ------------------------------------------
 	if sprite:
 		sprite.play("andar")
 	# ---------------------
@@ -60,6 +83,7 @@ func _physics_process(delta: float) -> void:
 	if progress_ratio >= 1.0:
 		causou_dano_na_base.emit(dano_na_floresta)
 		queue_free() # Inimigo some
+		print("Inimigo SUMIU!!!!!!!!!!!!!!!!")
 
 func receber_dano(quantidade: float) -> void:
 	vida_atual -= quantidade

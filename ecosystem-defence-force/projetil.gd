@@ -1,7 +1,7 @@
 extends Area2D
 
 # Configurações de voo
-var velocidade: float = 50
+var velocidade: float = 150
 var alvo: Node2D = null
 var dano: float = 0.0
 

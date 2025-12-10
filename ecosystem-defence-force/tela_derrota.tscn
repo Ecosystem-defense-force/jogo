@@ -1,8 +1,12 @@
+<<<<<<< HEAD
+[gd_scene format=3 uid="uid://loxi71omvgw3"]
+=======
 [gd_scene load_steps=4 format=3 uid="uid://loxi71omvgw3"]
 
 [ext_resource type="Script" uid="uid://b2rkn334bin18" path="res://tela_derrota.gd" id="1_kkw63"]
 [ext_resource type="FontFile" uid="uid://dmmiu372rqjto" path="res://sprites/Pixel Game.otf" id="2_kkw63"]
 [ext_resource type="Texture2D" uid="uid://ejralq4cyt41" path="res://sprites/forest_on_fire_400x192_final.png" id="3_kkw63"]
+>>>>>>> 6941a1f1879535fbae2ff98a63eb5d43ba3d6fe5
 
 [node name="TelaDerrota" type="Control"]
 layout_mode = 3
