@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-[gd_scene format=3 uid="uid://loxi71omvgw3"]
-=======
 [gd_scene load_steps=4 format=3 uid="uid://loxi71omvgw3"]
 
 [ext_resource type="Script" uid="uid://b2rkn334bin18" path="res://tela_derrota.gd" id="1_kkw63"]
 [ext_resource type="FontFile" uid="uid://dmmiu372rqjto" path="res://sprites/Pixel Game.otf" id="2_kkw63"]
 [ext_resource type="Texture2D" uid="uid://ejralq4cyt41" path="res://sprites/forest_on_fire_400x192_final.png" id="3_kkw63"]
->>>>>>> 6941a1f1879535fbae2ff98a63eb5d43ba3d6fe5
 
-[node name="TelaDerrota" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +12,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kkw63")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_kkw63")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -30,27 +32,18 @@ alignment = 1
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kkw63")
-theme_override_font_sizes/font_size = 29
 text = "Game Over!"
 horizontal_alignment = 1
 
 [node name="Menu" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kkw63")
-theme_override_font_sizes/font_size = 29
 text = "Menu"
 
 [node name="Quit" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kkw63")
-theme_override_font_sizes/font_size = 29
 text = "Quit"
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_kkw63")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
