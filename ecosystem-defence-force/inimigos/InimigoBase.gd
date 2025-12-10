@@ -8,8 +8,8 @@ signal causou_dano_na_base(dano: int)
 @export var nome_inimigo: String = "Lenhador"
 @export var velocidade: float = 100.0
 @export var vida_maxima: float = 50.0
-@export var dano_na_floresta: int = 1 
-@export var recompensa_sementes: int = 5 
+@export var dano_na_floresta: int = 25 # Quanto de vida tira da sua base
+@export var recompensa_sementes: int = 5 # Dinheiro ganho ao derrotar
 
 @export_category("Visual")
 @export var sprite: AnimatedSprite2D
@@ -45,9 +45,13 @@ func _ready() -> void:
 		barra_vida.visible = false 
 
 func _physics_process(delta: float) -> void:
-	# Movimentação manual do PathFollow2D
+	# Movimentação ao longo do Path2D
 	var movimento_em_pixels = velocidade * delta
-	progress += movimento_em_pixels # Mudei para 'progress' direto, é mais simples que ratio
+	var tamanho_total = get_parent().curve.get_baked_length()
+	if tamanho_total > 0:
+		progress_ratio += movimento_em_pixels / tamanho_total
+	else:
+		print("Erro: Caminho tem tamanho 0!")
 	
 	# Espelhar sprite
 	if sprite:
@@ -56,9 +60,18 @@ func _physics_process(delta: float) -> void:
 		while angulo_graus < -180: angulo_graus += 360
 		sprite.flip_v = abs(angulo_graus) > 90
 
+	# Verifica se chegou ao fim do caminho (progress_ratio vai de 0.0 a 1.0)
+	# Verifica se chegou ao fim do caminho (progress_ratio vai de 0.0 a 1.0)
 	if progress_ratio >= 1.0:
-		causou_dano_na_base.emit(dano_na_floresta)
-		queue_free()
+		# 1. Aplica o dano diretamente no GameManager (que verifica o Game Over)
+		game_manager.base_hp -= dano_na_floresta
+		
+		# 2. IMPORTANTE: Avisa o Gerenciador de Ondas que o inimigo "saiu" da conta
+		# Enviamos 0 de recompensa porque o jogador não matou ele
+		morreu.emit(0) 
+		
+		print("Inimigo chegou na base! Dano aplicado.")
+		queue_free() # Inimigo some
 
 func receber_dano(quantidade: float) -> void:
 	vida_atual -= quantidade

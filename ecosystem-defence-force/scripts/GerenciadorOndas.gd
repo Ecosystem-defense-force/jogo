@@ -89,15 +89,17 @@ func _spawnar_inimigo(spawn_info: SpawnInimigo) -> void:
 		return 
 
 	add_child(instancia)
+	
+	# Verifica se o script InimigoBase está carregado corretamente
+	if not instancia is InimigoBase and not instancia.has_signal("morreu"):
+		push_error("ERRO CRÍTICO: O inimigo spawnado não tem o script 'InimigoBase' anexado! Verifique a cena: " + instancia.name)
+		return
+
 	inimigos_vivos += 1
 	
+	# Conecta APENAS o sinal de morte.
+	# A lógica de dano já é feita pelo próprio inimigo antes de emitir esse sinal.
 	instancia.morreu.connect(func(_recompensa):
-		_on_inimigo_saiu_da_cena()
-	)
-	
-	instancia.causou_dano_na_base.connect(func(dano):
-		if game_manager:
-			game_manager.base_hp -= dano
 		_on_inimigo_saiu_da_cena()
 	)
 

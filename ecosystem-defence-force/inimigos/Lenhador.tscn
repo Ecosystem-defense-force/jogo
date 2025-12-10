@@ -32,6 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftfv3"]
+size = Vector2(12, 14)
 
 [node name="Node2D" type="Node2D"]
 
