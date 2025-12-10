@@ -1,7 +1,7 @@
 extends Path2D
 class_name GerenciadorDeOndas
 
-# 1. Tabela de Recompensas por Finalização de Onda (0 = Wave 1, etc.)
+# 1. Tabela de Recompensas por Finalização de Onda
 const WAVE_BONUS_TABLE: Array[int] = [100, 150, 150, 200, 300] 
 
 # Sinais para comunicar o estado do jogo para a UI ou GameManager
@@ -20,8 +20,12 @@ signal vitoria_total()
 
 # Variáveis de Estado Interno
 var wave_atual_index: int = -1
-var inimigos_vivos: int = 0
 var spawnando: bool = false
+
+# VARIÁVEIS DE CONTROLE DE FLUXO (NOVAS E ROBUSTAS)
+var inimigos_spawnados_nesta_wave: int = 0
+var inimigos_eliminados_nesta_wave: int = 0
+
 
 func _ready() -> void:
 	# Aguarda um momento inicial antes de começar a primeira wave
@@ -29,6 +33,10 @@ func _ready() -> void:
 	iniciar_proxima_wave()
 
 func iniciar_proxima_wave() -> void:
+	# Reseta os contadores no início de cada nova wave
+	inimigos_spawnados_nesta_wave = 0
+	inimigos_eliminados_nesta_wave = 0
+	
 	wave_atual_index += 1
 	
 	# Atualiza o GameManager (Index + 1 para exibição correta "Wave 1")
@@ -52,7 +60,7 @@ func _processar_spawns(wave: Wave) -> void:
 		
 		if spawn_info == null: continue
 		
-		# Lógica de Dificuldade Progressiva (Mantido o cálculo do colega/HEAD):
+		# Lógica de Dificuldade Progressiva:
 		var inimigos_extras = wave_atual_index * multiplicador_dificuldade
 		var qtd_total = spawn_info.quantidade + inimigos_extras
 		
@@ -62,14 +70,17 @@ func _processar_spawns(wave: Wave) -> void:
 			if not is_inside_tree(): return
 			
 			_spawnar_inimigo(spawn_info)
+			
+			# Incrementa a contagem de inimigos CRIADOS
+			inimigos_spawnados_nesta_wave += 1
+			
 			await get_tree().create_timer(intervalo).timeout
 			
 	spawnando = false
 	
-	# Edge Case: Força a verificação se todos os inimigos morreram antes do spawn terminar
-	if inimigos_vivos == 0:
-		_finalizar_wave()
-
+	# NÃO É MAIS NECESSÁRIO forçar a verificação aqui.
+	# A função _on_inimigo_saiu_da_cena fará a checagem final.
+	
 func _spawnar_inimigo(spawn_info: SpawnInimigo) -> void:
 	var inimigo_tipo = spawn_info.pegar_inimigo_aleatorio()
 	var cena_inimigo = _obter_cena_pelo_id(inimigo_tipo)
@@ -79,18 +90,16 @@ func _spawnar_inimigo(spawn_info: SpawnInimigo) -> void:
 
 	var instancia = cena_inimigo.instantiate()
 	
-	
 	if not instancia.has_signal("morreu"):
 		push_error("ERRO: O objeto instanciado '%s' não possui o sinal 'morreu'." % instancia.name)
 		add_child(instancia)
 		return
 
 	add_child(instancia)
-	inimigos_vivos += 1
 	
-	# Conexão de sinais com funções anônimas (Lambdas - Solução do Henrique)
+	# Conexão de sinais com Lambdas para evitar erro de assinatura e atualizar contagem
 	instancia.morreu.connect(func(_recompensa):
-		_on_inimigo_saiu_da_cena() # Chama a função sem argumento para evitar erro
+		_on_inimigo_saiu_da_cena()
 	)
 	
 	instancia.causou_dano_na_base.connect(func(dano):
@@ -102,14 +111,19 @@ func _spawnar_inimigo(spawn_info: SpawnInimigo) -> void:
 func _on_inimigo_saiu_da_cena() -> void:
 	if not is_inside_tree(): return
 
-	inimigos_vivos -= 1
+	# Incrementa a contagem de ELIMINADOS
+	inimigos_eliminados_nesta_wave += 1
 	
-	# Se a contagem chegar a zero e não houver mais spawn, finaliza
-	if inimigos_vivos <= 0 and not spawnando:
+	print("ELIMINADOS: ", inimigos_eliminados_nesta_wave, " / SPAWNADOS: ", inimigos_spawnados_nesta_wave, " | SPAWNING: ", spawnando)
+	
+	# Condição de finalização:
+	# 1. Todos que foram CRIADOS já foram ELIMINADOS
+	# 2. O spawn de novos inimigos já terminou
+	if inimigos_eliminados_nesta_wave >= inimigos_spawnados_nesta_wave and not spawnando:
 		_finalizar_wave()
 
 func _finalizar_wave() -> void:
-	# LÓGICA DE BÔNUS (Mantida a sua versão HEAD):
+	# LÓGICA DE BÔNUS:
 	if wave_atual_index < WAVE_BONUS_TABLE.size():
 		var bonus = WAVE_BONUS_TABLE[wave_atual_index]
 		
@@ -117,8 +131,6 @@ func _finalizar_wave() -> void:
 		game_manager.add_money(bonus)
 		
 		print("BÔNUS DE WAVE CREDITADO: ", bonus)
-	
-	# FIM DA LÓGICA DE BÔNUS
 	
 	wave_concluida.emit()
 	
