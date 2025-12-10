@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgot0rijn8f28"
-path="res://.godot/imported/cena-de-pixels-graficos-de-8-bits-com-floresta.png-581a97a80b8ab348b0b9183d41c59109.ctex"
+uid="uid://bxwkv4vwn2q8p"
+path="res://.godot/imported/victorious_forest_400x192_final.png-3126b78e5f61904582c08ee4f094d6cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cena-de-pixels-graficos-de-8-bits-com-floresta.png"
-dest_files=["res://.godot/imported/cena-de-pixels-graficos-de-8-bits-com-floresta.png-581a97a80b8ab348b0b9183d41c59109.ctex"]
+source_file="res://sprites/victorious_forest_400x192_final.png"
+dest_files=["res://.godot/imported/victorious_forest_400x192_final.png-3126b78e5f61904582c08ee4f094d6cf.ctex"]
 
 [params]
 
