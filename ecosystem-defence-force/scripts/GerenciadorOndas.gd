@@ -79,24 +79,19 @@ func _spawnar_inimigo(spawn_info: SpawnInimigo) -> void:
 
 	var instancia = cena_inimigo.instantiate()
 	
-	# Validação de Segurança: Garante que o inimigo tem a lógica necessária
-	if not instancia.has_signal("morreu"):
-		push_error("ERRO: O objeto instanciado '%s' não possui o sinal 'morreu'. Verifique o script." % instancia.name)
-		# Adiciona à cena para debug visual, mas não conecta lógica para evitar crash
-		add_child(instancia) 
-		return 
-
+	# Adiciona o inimigo como filho do Path2D (GerenciadorOndas)
 	add_child(instancia)
+	
+	# Verifica se o script InimigoBase está carregado corretamente
+	if not instancia is InimigoBase and not instancia.has_signal("morreu"):
+		push_error("ERRO CRÍTICO: O inimigo spawnado não tem o script 'InimigoBase' anexado! Verifique a cena: " + instancia.name)
+		return
+
 	inimigos_vivos += 1
 	
-	# Conexão de sinais com funções anônimas (Lambdas)
+	# Conecta APENAS o sinal de morte.
+	# A lógica de dano já é feita pelo próprio inimigo antes de emitir esse sinal.
 	instancia.morreu.connect(func(_recompensa):
-		_on_inimigo_saiu_da_cena()
-	)
-	
-	instancia.causou_dano_na_base.connect(func(dano):
-		if game_manager:
-			game_manager.base_hp -= dano
 		_on_inimigo_saiu_da_cena()
 	)
 
