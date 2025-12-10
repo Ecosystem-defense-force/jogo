@@ -23,7 +23,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"andar",
-"speed": 2.0
+"speed": 10.0
 }, {
 "frames": [],
 "loop": true,
@@ -43,7 +43,7 @@ position = Vector2(-8, 152)
 rotates = false
 loop = false
 script = ExtResource("1_dnx4s")
-velocidade = 10.0
+velocidade = 150.0
 recompensa_sementes = 10
 sprite = NodePath("Sprite2D")
 floating_text_scene = ExtResource("2_euhxu")

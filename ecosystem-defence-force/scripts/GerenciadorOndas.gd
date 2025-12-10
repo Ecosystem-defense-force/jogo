@@ -1,7 +1,7 @@
 extends Path2D
 class_name GerenciadorDeOndas
 
-# 1. NOVO: Tabela de Recompensas por Finalização de Onda (0 = Wave 1, etc.)
+# 1. Tabela de Recompensas por Finalização de Onda (0 = Wave 1, etc.)
 const WAVE_BONUS_TABLE: Array[int] = [100, 150, 150, 200, 300] 
 
 # Sinais para comunicar o estado do jogo para a UI ou GameManager
@@ -52,7 +52,7 @@ func _processar_spawns(wave: Wave) -> void:
 		
 		if spawn_info == null: continue
 		
-		# Lógica de Dificuldade Progressiva (do Henrique):
+		# Lógica de Dificuldade Progressiva (Mantido o cálculo do colega/HEAD):
 		var inimigos_extras = wave_atual_index * multiplicador_dificuldade
 		var qtd_total = spawn_info.quantidade + inimigos_extras
 		
@@ -79,7 +79,7 @@ func _spawnar_inimigo(spawn_info: SpawnInimigo) -> void:
 
 	var instancia = cena_inimigo.instantiate()
 	
-	# Validação de Segurança (do Henrique)
+	
 	if not instancia.has_signal("morreu"):
 		push_error("ERRO: O objeto instanciado '%s' não possui o sinal 'morreu'." % instancia.name)
 		add_child(instancia)
@@ -109,7 +109,7 @@ func _on_inimigo_saiu_da_cena() -> void:
 		_finalizar_wave()
 
 func _finalizar_wave() -> void:
-	# LÓGICA DE BÔNUS ADICIONADA AQUI:
+	# LÓGICA DE BÔNUS (Mantida a sua versão HEAD):
 	if wave_atual_index < WAVE_BONUS_TABLE.size():
 		var bonus = WAVE_BONUS_TABLE[wave_atual_index]
 		

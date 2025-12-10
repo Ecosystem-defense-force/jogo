@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvno3xnn0hkj3"]
+[gd_scene load_steps=15 format=3 uid="uid://cvno3xnn0hkj3"]
 
 [ext_resource type="Texture2D" uid="uid://bagd0rm6vy05p" path="res://sprites/free_tileset_16x16_by_chaoticcherrycake_ddi8611.png" id="1_bcbcq"]
 [ext_resource type="Script" uid="uid://nqc0kf2j5we1" path="res://FaseGerenciador.gd" id="1_fvag4"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bsr6ms1kvj3s1" path="res://inimigos/Mandrake.tscn" id="5_fv4w7"]
 [ext_resource type="Script" uid="uid://ctnqrsmh0j16c" path="res://scripts/Wave.gd" id="6_fvag4"]
 [ext_resource type="Resource" uid="uid://cs7cj5pgu5bij" path="res://recursos/Wave1.tres" id="7_kva58"]
+[ext_resource type="PackedScene" uid="uid://cs187ghwphefg" path="res://torres/Slot.tscn" id="8_fv4w7"]
+[ext_resource type="PackedScene" uid="uid://d2alfhhprj6cc" path="res://recursos/HUD.tscn" id="9_fvag4"]
 [ext_resource type="PackedScene" uid="uid://djhuyigtwblf0" path="res://HUD.tscn" id="11_kva58"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_js7pq"]
@@ -150,5 +152,16 @@ lista_de_waves = Array[ExtResource("6_fvag4")]([ExtResource("7_kva58")])
 
 [node name="HighlightTile" parent="." instance=ExtResource("4_js7pq")]
 texture_filter = 1
+
+[node name="HUD" parent="." instance=ExtResource("9_fvag4")]
+
+[node name="Area2D10" parent="." instance=ExtResource("8_fv4w7")]
+position = Vector2(168, 136)
+
+[node name="Area2D11" parent="." instance=ExtResource("8_fv4w7")]
+position = Vector2(71, 40)
+
+[node name="Area2D12" parent="." instance=ExtResource("8_fv4w7")]
+position = Vector2(71, 136)
 
 [node name="HUD2" parent="." instance=ExtResource("11_kva58")]

@@ -1,50 +1,30 @@
 extends Node2D
-@onready var game_manager = get_node("/root/GameManager")
+class_name FaseGerenciador
 
-@onready var hud_construcao: CanvasLayer = $HUD 
+# Este script serve agora como o nó principal da fase (World.tscn),
+# orquestrando a UI e o GameManager, sem gerenciar a lógica de construção.
 
-# Guarda qual Slot o jogador clicou por último
-var slot_selecionado: SlotDeConstrucao = null
+# [VARS REMOVIDAS] sementes_iniciais, sementes_atuais, hud_construcao, slot_selecionado
+
+# ==========================================================
+# FUNÇÕES DE VIDA DO NÓ
+# ==========================================================
 
 func _ready() -> void:
-	# Esconde o menu de botões no começo
-	if hud_construcao:
-		hud_construcao.visible = false
+	# A lógica de conexão com Slots e a visibilidade da HUD de Construção
+	# foram removidas para evitar o erro "Could not find type SlotDeConstrucao".
 	
-	# Conecta o sinal de TODOS os slots que estiverem na fase
-	for slot in get_tree().get_nodes_in_group("Slots"):
-		slot.slot_clicado.connect(_on_slot_clicado)
+	# Se precisar de alguma inicialização global da fase (ex: iniciar a música),
+	# adicione aqui. Caso contrário, deixe apenas 'pass'.
+	pass
 
-func _on_slot_clicado(slot: SlotDeConstrucao) -> void:
-	# Se o slot já tem torre, talvez mostrar opções de upgrade (futuro)
-	if slot.torre_construida != null:
-		print("Esse slot já está ocupado.")
-		return
+func _process(delta: float) -> void:
+	# Lógica de processamento por frame (ex: controle de pause), se necessário.
+	pass
 
-	# 1. Guarda quem é o slot alvo
-	slot_selecionado = slot
-	
-	# 2. Move o menu para perto do slot (opcional, ou deixa fixo na tela)
-	# hud_construcao.global_position = slot.global_position 
-	
-	# 3. Mostra o menu de botões
-	hud_construcao.visible = true
-	print("Menu aberto para o slot: ", slot.name)
+# ==========================================================
+# FUNÇÕES OBSOLETAS REMOVIDAS
+# ==========================================================
 
-# Esta função é chamada pelo BOTÃO do HUD
-func tentar_comprar_torre(dados: DadosTorre) -> void:
-	if slot_selecionado == null:
-		return
-		
-	if game_manager.spend_money(dados.preco):
-		slot_selecionado.construir(dados.cena_torre)
-	
-		hud_construcao.visible = false
-		slot_selecionado = null
-		print("Construído! Sementes restantes: ", game_manager.player_money)
-	else:
-		print("Sem dinheiro!")
-		
-		
-		
-		
+# A lógica de slots (ex: _on_slot_clicado) foi removida.
+# A lógica de compra (ex: tentar_comprar_torre) foi movida para IconeTropa.gd.
