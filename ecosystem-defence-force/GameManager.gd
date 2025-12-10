@@ -27,13 +27,3 @@ func spend_money(amount: int) -> bool:
 		player_money -= amount
 		return true	
 	return false
-
-
-
-
-
-
-
-
-
-	
