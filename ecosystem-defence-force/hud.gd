@@ -27,4 +27,4 @@ func _update_wave(new_wave_number: int):
 
 func _update_money(new_money_amount: int):
 	# Formata o dinheiro (ex: $500)
-	lbl_dinheiro.text = "$" + str(new_money_amount)
+	lbl_dinheiro.text = "$ementes: $" + str(new_money_amount)

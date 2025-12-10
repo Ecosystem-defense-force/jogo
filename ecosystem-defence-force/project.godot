@@ -37,6 +37,7 @@ window/vsync/mode=0
 
 InimigoArea=""
 Slots=""
+Inimigos=""
 
 [layer_names]
 

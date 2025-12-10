@@ -13,7 +13,11 @@ func _process(delta: float) -> void:
 
 
 func _on_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://MenuPrincipal.tscn") # Replace with function body.
+	# Reseta os dados ANTES de mudar a cena
+	GameManager.reset_game() 
+	
+	# Troca para o menu
+	get_tree().change_scene_to_file("res://MenuPrincipal.tscn")
 
 
 func _on_quit_pressed() -> void:
